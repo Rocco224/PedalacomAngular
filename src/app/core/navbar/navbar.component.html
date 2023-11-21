@@ -1,1 +1,8 @@
-<p>navbar works!</p>
+<div> <h3>PEDALACOM</h3><br></div>
+<div style="border: 5px; border-style: double;">
+   
+    <button routerLink="/home" routerLinkActive="true" *ngIf=InHome (click)="HomeClick()">HOME</button>
+    <button routerLink="/customer" routerLinkActive="true" *ngIf=InCustomer (click)="customerClick()">CUSTOMER</button>
+    <button routerLink="/sales-order-header" routerLinkActive="true" *ngIf=InOrder (click)="OrderClick()">ORDINI</button>
+</div>
+<router-outlet></router-outlet>
