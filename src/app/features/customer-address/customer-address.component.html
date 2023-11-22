@@ -8,5 +8,20 @@
 <ul>
     <li *ngFor="let name of objNames">{{name}}</li>
 </ul>
-<p>mandiamo un messaggio a Employee</p>
+<p>mandiamo un messaggio a customer</p>
 <button (click)="sendMessage()">Send Message</button>
+<button (click)="cngStartFormAddress()">Aggiungi Indirizzo</button>
+<div *ngIf="startFormAddress">
+    <form #frmAddress="ngForm" (submit)="InsertDataFrm(frmAddress)">
+        <input type="text" maxlength="50" name="indirizzo" #frmStreet="ngModel" placeholder="Inserire indirizzo" [ngModel]="address.indirizzo" required [ngClass]="{'AddressError': frmStreet.invalid && frmStreet.dirty}">
+        <input type="text" minlength="5" maxlength="5" name="cap" #frmCAP placeholder="Inserire CAP" [ngModel]="address.cap" required >
+        <button type="submit" [disabled]="frmAddress.invalid">conferma</button>
+    </form>
+   <pre>{{frmAddress.value | json}}</pre>   
+</div>
+<div *ngIf="addressArray.length>0"> lista indirizzi
+    <ul >
+   <li *ngFor="let i of addressArray">
+        {{i.indirizzo}}-{{i.cap}}</li>
+   </ul>
+</div>
