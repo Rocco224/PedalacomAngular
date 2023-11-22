@@ -1,0 +1,12 @@
+<p>Elenco nominativi</p>
+
+<ul>
+    <li *ngFor="let name of names">{{name}}</li>
+</ul>
+<p>Elenco nominativi service</p>
+
+<ul>
+    <li *ngFor="let name of objNames">{{name}}</li>
+</ul>
+<p>mandiamo un messaggio a Employee</p>
+<button (click)="sendMessage()">Send Message</button>
