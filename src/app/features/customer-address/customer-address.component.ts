@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { ObjectsService } from '../../shared/services/objects.service';
 import { FormsModule, NgForm } from '@angular/forms';
-import { CustomerAddress } from '../../shared/modelsData/customer-address';
+import { CustomerAddress } from '../../shared/modelsData/CustomerModel/CustomerAddress';
 
 @Component({
   selector: 'app-customer-address',

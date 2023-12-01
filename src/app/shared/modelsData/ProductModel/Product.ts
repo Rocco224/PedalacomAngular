@@ -19,8 +19,8 @@ export class Product{
     ThumbnailPhotoFileName = '';
     Rowguid: any;
     ModifiedDate: any;
-    ProductCategory: ProductCategory | undefined;
-    ProductModel: ProductModel | undefined;
+    ProductCategory: ProductCategory = new ProductCategory;
+    ProductModel: ProductModel = new ProductModel;
     SalesOrderDetails: SalesOrderDetail[] = [];
 
     
