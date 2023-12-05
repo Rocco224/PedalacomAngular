@@ -15,9 +15,8 @@ export class ProductComponent implements OnInit {
   Products: Product[]=[]
 
   constructor(private ps: ProductCallService) { }
-  ngOnInit() {
-    console.log('avvio funzione')
-   this.ps.getProductData().subscribe({
+  getProduct() {
+    this.ps.getProductData().subscribe({
     
      next: (result: any) => {
        
@@ -30,6 +29,10 @@ export class ProductComponent implements OnInit {
         console.log(err);
       }
    })
+  }
+  ngOnInit() {
+    console.log('avvio funzione')
+    this.getProduct();
    
   }
 }

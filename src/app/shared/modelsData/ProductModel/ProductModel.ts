@@ -1,13 +1,13 @@
 import { ProductModelProductDescription } from "./ProductModelProductDescription";
 import { Product } from "./Product";
 export class ProductModel{
-    ProductModelId=0;
-    Name='';
-    CatalogDescription='';
-    Rowguid: any;
-    ModifiedDate: any;
-    ProductModelProductDescriptions: ProductModelProductDescription[]=[];
-    Products: Product[]= [];
+    productModelId=0;
+    name='';
+    catalogDescription='';
+    rowguid: any;
+    modifiedDate: any;
+    productModelProductDescriptions: ProductModelProductDescription[]=[];
+    products: Product[]= [];
 
 
 }

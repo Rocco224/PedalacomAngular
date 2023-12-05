@@ -1,12 +1,12 @@
 import { Product } from "./Product";
 export class ProductCategory{
     constructor() { }
-    ProductCategoryId = 0;
-    ParentProductCategoryId: any;
-    Name = '';
-    Rowguid: any;
-    ModifiedDate: any;
-    InverseParentProductCategory: ProductCategory[] = [];
-    ParentProductCategory: ProductCategory= new ProductCategory;
-    Products: Product= new Product;
+    productCategoryId = 0;
+    parentProductCategoryId: any;
+    name = '';
+    rowguid: any;
+    modifiedDate: any;
+    inverseParentProductCategory: ProductCategory[] = [];
+    parentProductCategory: ProductCategory= new ProductCategory;
+    products: Product= new Product;
 }

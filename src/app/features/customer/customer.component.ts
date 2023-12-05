@@ -1,18 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomerAddressComponent } from '../customer-address/customer-address.component';
+import { CustomerCallService } from '../../shared/crudhttp/customer-call.service';
+import { Customer } from '../../shared/modelsData/CustomerModel/Customer';
+
+
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [CommonModule,CustomerAddressComponent],
+  imports: [CommonModule],
   templateUrl: './customer.component.html',
-  styleUrl: './customer.component.css'
+  styleUrl: './customer.component.css',
+  providers:[CustomerCallService]
 })
-export class CustomerComponent {
-  names: string[] = ['simone', 'davide', 'lucrezia']
-  receivedData: string = ''
-  receivedDataFromAddress(data: string) {
-    this.receivedData=data
+export class CustomerComponent implements OnInit {
+  Customers: Customer[] = []
+  constructor(private cs: CustomerCallService) { }
+  getCustomer() {
+    this.cs.getProductData().subscribe({
+    
+     next: (result: any) => {
+       
+       this.Customers = result;
+       console.log('sono nel next ',this.Customers[0])
+       
+      },
+     error: (err: any) => {
+        console.log('errore')
+        console.log(err);
+      }
+   })
   }
+  ngOnInit() {
+    console.log('avvio funzione')
+    this.getCustomer();
+   
+  }
+  
 }
