@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductCallService } from '../../shared/crudhttp/product-call.service';
 import { Product } from '../../shared/modelsData/ProductModel/Product';
@@ -8,20 +8,28 @@ import { Product } from '../../shared/modelsData/ProductModel/Product';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
+  providers: [ProductCallService]
 })
-export class ProductComponent {
-  ProductClass: Product[]=[]
+export class ProductComponent implements OnInit {
+  Products: Product[]=[]
 
   constructor(private ps: ProductCallService) { }
-  GetProductByService() {
-    this.ps.getProductData().subscribe({
-      next:(data:any)=>{
-        this.ProductClass= data.$values;
+  ngOnInit() {
+    console.log('avvio funzione')
+   this.ps.getProductData().subscribe({
+    
+     next: (result: any) => {
+       
+       this.Products = result;
+       console.log('sono nel next ',this.Products[0])
+       
       },
-      error:(err: any)=>{
+     error: (err: any) => {
+        console.log('errore')
         console.log(err);
       }
-    })
+   })
+   
   }
 }

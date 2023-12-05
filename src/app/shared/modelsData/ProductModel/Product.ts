@@ -2,26 +2,26 @@ import { ProductCategory } from "./ProductCategory";
 import { ProductModel } from "./ProductModel";
 import { SalesOrderDetail } from "../OrderModel/SalesOrderDetail";
 export class Product{
-    ProductId = 0;
-    Name = '';
-    ProductNumber = '';
-    Color = '';
-    StandardCost = 0.00;
-    ListPrice = 0.00;
-    Size = '';
-    Weight = 0.00;
-    ProductCategoryId = 0;
-    ProductModelId = 0;
-    SellStartDate : any;
-    SellEndDate: any;
-    DiscontinuedDate: any;
-    ThumbNailPhoto = 0;
-    ThumbnailPhotoFileName = '';
-    Rowguid: any;
-    ModifiedDate: any;
-    ProductCategory: ProductCategory = new ProductCategory;
-    ProductModel: ProductModel = new ProductModel;
-    SalesOrderDetails: SalesOrderDetail[] = [];
+    productId = 0;
+    name = '';
+    productNumber = '';
+    color = '';
+    standardCost = 0.00;
+    listPrice = 0.00;
+    size = '';
+    weight = 0.00;
+    productCategoryId = 0;
+    productModelId = 0;
+    sellStartDate : any;
+    sellEndDate: any;
+    discontinuedDate: any;
+    thumbNailPhoto = 0;
+    thumbnailPhotoFileName = '';
+    rowguid: any;
+    modifiedDate: any;
+    productCategory: ProductCategory = new ProductCategory;
+    productModel: ProductModel = new ProductModel;
+    salesOrderDetails: SalesOrderDetail[] = [];
 
     
 

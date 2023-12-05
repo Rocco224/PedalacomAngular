@@ -1,4 +1,7 @@
-<p style="color:orange;font-size: 72px;">Product works!</p>
+<div>
+<ul >
+    <li *ngFor="let p of Products">{{p.name}}  - {{p.listPrice}}</li>
+</ul>
 
-<button (click)="GetProductByService()">Ottieni Prodotti [HttpGet]</button>
-    
+
+    </div>
