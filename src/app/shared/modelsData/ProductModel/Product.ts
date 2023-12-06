@@ -15,7 +15,7 @@ export class Product{
     sellStartDate : any;
     sellEndDate: any;
     discontinuedDate: any;
-    thumbNailPhoto = 0;
+    thumbNailPhoto : any;
     thumbnailPhotoFileName = '';
     rowguid: any;
     modifiedDate: any;

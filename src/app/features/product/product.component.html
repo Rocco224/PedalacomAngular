@@ -1,6 +1,12 @@
 <div>
-<ul >
-    <li *ngFor="let p of Products">{{p.name}}  - {{p.listPrice}}</li>
+<div>
+    <button (click)="cngInsert()">Inserisci nuovo prodotto</button>
+    <p *ngIf="insert"> ciao</p>
+</div>
+<button (click)="cngView()">vedi prodotti </button>
+<ul *ngIf="view">
+    
+    <li *ngFor="let p of Products">  {{p.name}}   - {{p.listPrice}} - </li>
 </ul>
 
 
