@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductCallService } from '../../shared/crudhttp/product-call.service';
 import { Product } from '../../shared/modelsData/ProductModel/Product';
 
+
 @Component({
   selector: 'app-product',
   standalone: true,

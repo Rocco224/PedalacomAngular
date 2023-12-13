@@ -36,5 +36,8 @@ export class HomeComponent implements OnInit{
       }
    })
  }
+ getImage(s: any) {
+  return `data:image/jpeg;base64,${s}`
+}
   
 }

@@ -2,6 +2,6 @@
 
 <ul>
     
-    <li *ngFor="let p of Products">{{p.name}}  - {{p.listPrice}}</li>
+    <li *ngFor="let p of Products"> <img [src]="getImage(p.thumbNailPhoto)"> {{p.name}}  - {{p.listPrice}} - </li>
 </ul>
 
