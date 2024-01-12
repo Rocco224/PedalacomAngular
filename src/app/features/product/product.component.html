@@ -21,25 +21,25 @@
 
             <div>
                 <label for="StandardCost">Standard Cost * :</label>
-                <input type="text" id="StandardCost" name="StandardCost" ngModel required pattern="^\d+(\.\d{1,2})?$" >
+                <input type="number" id="StandardCost" name="StandardCost" ngModel required pattern="^\d+(\.\d{1,2})?$" >
             </div>
 
             <div>
                 <label for="ListPrice">List Price * :</label>
-                <input type="text" id="ListPrice" name="ListPrice" ngModel required pattern="^\d+(\.\d{1,2})?$">
+                <input type="number" id="ListPrice" name="ListPrice" ngModel required pattern="^\d+(\.\d{1,2})?$">
             </div>
 
             
             <div>
                 <label for="Size">Size:</label>
-                <input type="text" id="Size" name="Size" ngModel pattern="^\d+(\.\d{1,2})?$">
+                <input type="text" id="Size" name="Size" ngModel  maxlength="5">
             </div>
 
             <div>
                 <label for="Weight">Weight:</label>
-                <input type="text" id="Weight" name="Weight" ngModel pattern="^\d+(\.\d{1,2})?$" >
+                <input type="number" id="Weight" name="Weight" ngModel pattern="^\d+(\.\d{1,2})?$" >
             </div>
-
+<!--
             <div>
                 <label for="ProductCategoryID">Product Category ID:</label>
                 <input type="text" id="ProductCategoryID" name="ProductCategoryID" ngModel pattern="^\d+">
@@ -47,8 +47,8 @@
 
             <div>
                 <label for="ProductModelID">Product Model ID:</label>
-                <input type="text" id="ProductModelID" name="ProductModelID" ngModel pattern="^\d+">
-            </div>
+                <input type="number" id="ProductModelID" name="ProductModelID" ngModel pattern="^\d+">
+            </div>-->
                    
             <div>
                 <label for="SellStartDate">Sell Start Date * :</label>
@@ -64,7 +64,7 @@
                 <label for="DiscontinuedDate">Discontinued Date:</label>
                 <input type="date" id="DiscontinuedDate" name="DiscontinuedDate" ngModel >
             </div>
-
+<!--
             <div>
                 <label for="ThumbNailPhoto">ThumbNail Photo:</label>
                 <input type="text" id="ThumbNailPhoto" name="ThumbNailPhoto" ngModel >            
@@ -73,7 +73,7 @@
             <div>
                 <label for="ThumbnailPhotoFileName">Thumbnail Photo File Name:</label>
                 <input type="text" id="ThumbnailPhotoFileName" name="ThumbnailPhotoFileName" ngModel >
-            </div>
+            </div>-->
 
             <div>
                 <label for="ModifiedDate">Modified Date * :</label>

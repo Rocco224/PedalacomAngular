@@ -20,14 +20,15 @@ export class ProductComponent implements OnInit {
   insert: boolean = false;
   view: boolean = false;
   value: string = ''
-  newProduct: any= { }
+  newProduct: Product[]=[]
   constructor(private ps: ProductCallService) {
    }
    submitForm(form: any): void {
     if (form.valid) {
       // Puoi eseguire qui l'invio del form o eseguire altre azioni
-      this.newProduct= form.value
+      this.newProduct[0]= form.value
       console.log(form.value);
+      console.log("ogetto",this.newProduct[0]);
       this.postProduct()
 
     }
@@ -48,7 +49,7 @@ export class ProductComponent implements OnInit {
     })
   }
   postProduct() {
-    this.ps.postProductData(this.newProduct).subscribe({
+    this.ps.postProductData(this.newProduct[0]).subscribe({
     
       next: (result: any) => {
        
