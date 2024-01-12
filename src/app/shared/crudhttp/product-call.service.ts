@@ -14,7 +14,7 @@ export class ProductCallService {
   getProductData(): Observable<any> {
     return this.http.get<any>(this.ProductURL)
   }
-  postProduct(product: Product) {
+  postProductData(product: Product) {
     return this.http.post(this.ProductURL,product)
     
   }

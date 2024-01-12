@@ -1,7 +1,90 @@
 <div>
 <div>
     <button (click)="cngInsert()">Inserisci nuovo prodotto</button>
-    <p *ngIf="insert"> ciao</p>
+    <div *ngIf="insert"> <div class="container">
+        <h2>Inserisci un nuovo prodotto</h2>
+        <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)">
+            <div>
+              <label for="Name">Name * :</label>
+              <input type="text" id="Name" name="Name" ngModel required >
+            </div>
+          
+            <div>
+              <label for="ProductNumber">ProductNumber * : </label>
+              <input type="text" id="ProductNumber" name="ProductNumber" ngModel required>
+            </div>
+          
+            <div>
+              <label for="Color">Color:</label>
+              <input type="text" id="Color" name="Color" ngModel >
+            </div>
+
+            <div>
+                <label for="StandardCost">Standard Cost * :</label>
+                <input type="number" id="StandardCost" name="StandardCost" ngModel required pattern="^\d+(\.\d{1,2})?$" >
+            </div>
+
+            <div>
+                <label for="ListPrice">List Price * :</label>
+                <input type="number" id="ListPrice" name="ListPrice" ngModel required pattern="^\d+(\.\d{1,2})?$">
+            </div>
+
+            
+            <div>
+                <label for="Size">Size:</label>
+                <input type="text" id="Size" name="Size" ngModel  maxlength="5">
+            </div>
+
+            <div>
+                <label for="Weight">Weight:</label>
+                <input type="number" id="Weight" name="Weight" ngModel pattern="^\d+(\.\d{1,2})?$" >
+            </div>
+<!--
+            <div>
+                <label for="ProductCategoryID">Product Category ID:</label>
+                <input type="text" id="ProductCategoryID" name="ProductCategoryID" ngModel pattern="^\d+">
+            </div>
+
+            <div>
+                <label for="ProductModelID">Product Model ID:</label>
+                <input type="number" id="ProductModelID" name="ProductModelID" ngModel pattern="^\d+">
+            </div>-->
+                   
+            <div>
+                <label for="SellStartDate">Sell Start Date * :</label>
+                <input type="date" id="SellStartDate" name="SellStartDate" ngModel required >
+            </div>
+
+            <div>
+                <label for="SellEndDate">SellEndDate:</label>
+                <input type="date" id="SellEndDate" name="SellEndDate" ngModel >
+            </div>
+
+            <div>
+                <label for="DiscontinuedDate">Discontinued Date:</label>
+                <input type="date" id="DiscontinuedDate" name="DiscontinuedDate" ngModel >
+            </div>
+<!--
+            <div>
+                <label for="ThumbNailPhoto">ThumbNail Photo:</label>
+                <input type="text" id="ThumbNailPhoto" name="ThumbNailPhoto" ngModel >            
+            </div>
+
+            <div>
+                <label for="ThumbnailPhotoFileName">Thumbnail Photo File Name:</label>
+                <input type="text" id="ThumbnailPhotoFileName" name="ThumbnailPhotoFileName" ngModel >
+            </div>-->
+
+            <div>
+                <label for="ModifiedDate">Modified Date * :</label>
+                <input type="date" id="ModifiedDate" name="ModifiedDate" ngModel required>
+            </div>
+
+
+          
+            <button type="submit" [disabled]="!myForm.valid">Invia</button>
+        </form>
+        </div>
 </div>
 <button (click)="cngView()">vedi prodotti </button>
 <ul *ngIf="view">
