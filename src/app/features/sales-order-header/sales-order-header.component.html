@@ -1,4 +1,3 @@
 <ul >
-    
-    <li *ngFor="let p of Header">  {{p.salesOrderNumber}}   - {{p.customerId}} - </li>
+    <li *ngFor="let order of _ordersList">  {{order.salesOrderId}} - {{order.salesOrderNumber}} - {{order.customerId}}</li>
 </ul>

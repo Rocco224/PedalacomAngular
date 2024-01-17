@@ -1,23 +1,24 @@
 import { SalesOrderHeader } from "../OrderModel/SalesOrderHeader";
 import { CustomerAddress } from "./CustomerAddress";
-export class Customer{
-    customerId=0;
-    nameStyle: boolean=false;
-    title='';
-    firstName='';
-    middleName='';
-    lastName='';
-    suffix='';
-    companyName='';
-    salesPerson='';
-    emailAddress='';
-    phone='';
-    passwordHash='';
-    passwordSalt='';
-    rowguid: any;
-    modifiedDate:any;
-    valid: any;
-    customerAddresses: CustomerAddress[]=[];
-    salesOrderHeaders: SalesOrderHeader[]=[];
 
+export class Customer{
+    CustomerId = undefined;
+    NameStyle: boolean=false;
+    Title = undefined;
+    FirstName='';
+    MiddleName = undefined;
+    LastName='';
+    Suffix = undefined;
+    CompanyName = undefined;
+    SalesPerson = undefined;
+    EmailAddress = undefined;
+    Phone = undefined;
+    PasswordHash='';
+    PasswordSalt='';
+    Rowguid = undefined;
+    ModifiedDate = undefined;
+    Valid = undefined;
+    Role = "Guest";
+    CustomerAddresses = undefined;
+    SalesOrderHeaders = undefined;
 }

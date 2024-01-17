@@ -1,9 +1,11 @@
 <div> <h3>PEDALACOM</h3><br></div>
 <div style="border: 5px; border-style: double;">
-   
-    <button routerLink="/home" routerLinkActive="true" *ngIf=InHome (click)="HomeClick()">HOME</button>
-    <button routerLink="/customer" routerLinkActive="true" *ngIf=InCustomer (click)="customerClick()">CUSTOMER</button>
-    <button routerLink="/sales-order-header" routerLinkActive="true" *ngIf=InOrder (click)="OrderClick()">ORDER HEADER</button>
-    <button routerLink="/product" routerLinkActive="true" *ngIf=InProduct (click)="ProductClick()">PRODUCTS</button>
+    <button routerLink="home">HOME</button>
+    <button routerLink="customer">CUSTOMER</button>
+    <button routerLink="sales-order-header">ORDER HEADER</button>
+    <button routerLink="product">PRODUCTS</button>
+
+    <button routerLink="login">LOGIN</button>
+    <button routerLink="register">REGISTER</button>
 </div>
 <router-outlet></router-outlet>

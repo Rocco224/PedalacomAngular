@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SaleOrderHeaderCallService } from '../../shared/crudhttp/sale-order-header-call.service';
 import { SalesOrderHeader } from '../../shared/modelsData/OrderModel/SalesOrderHeader';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-sales-order-header',
@@ -9,28 +10,28 @@ import { SalesOrderHeader } from '../../shared/modelsData/OrderModel/SalesOrderH
   imports: [CommonModule],
   templateUrl: './sales-order-header.component.html',
   styleUrl: './sales-order-header.component.css',
-  providers: [SaleOrderHeaderCallService]
+  providers: [SharedService]
 })
 export class SalesOrderHeaderComponent {
-  Header: SalesOrderHeader[] = []
-  constructor(private ss: SaleOrderHeaderCallService){}
-  getProduct() {
-    this.ss.getProductData().subscribe({
-    
-      next: (result: any) => {
-       
-        this.Header = result;
-        console.log('sono nel next ', this.Header[0])
-       
+  _path = 'http://localhost:5150/api/SalesOrderHeaders'
+  _ordersList: any = [];
+
+  constructor(private sharedService: SharedService) { }
+
+  getOrder() {
+    this.sharedService.ReadData(this._path).subscribe({
+      next: (data: any) => {
+        this._ordersList = data.body;
+        console.log(this._ordersList);
+        console.log(this._ordersList[0].salesOrderId)
       },
       error: (err: any) => {
-        console.log('errore')
         console.log(err);
       }
     })
   }
+
   ngOnInit() {
-    
-    this.getProduct();
+    this.getOrder();
   }
 }
