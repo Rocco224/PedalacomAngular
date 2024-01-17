@@ -1,20 +1,21 @@
 import { Component , OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../product/product.component';
-import { Product } from '../../shared/modelsData/ProductModel/Product';
+import { ProductCategory } from '../../shared/modelsData/ProductModel/ProductCategory';
 import { ProductCallService } from '../../shared/crudhttp/product-call.service';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,ProductComponent],
+  imports: [CommonModule,ProductComponent,FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [ProductCallService]
 })
 export class HomeComponent implements OnInit{
-  Products: Product[] = []
+  Products: ProductCategory[] = []
   ngOnInit() {
     
     this.getProduct();
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit{
      next: (result: any) => {
        
        this.Products = result;
-       console.log('sono nel next ',this.Products[0])
+       console.log('sono nel next ',this.Products[5])
        
       },
      error: (err: any) => {

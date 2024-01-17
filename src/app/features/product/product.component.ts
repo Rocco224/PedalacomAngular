@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductCallService } from '../../shared/crudhttp/product-call.service';
 import { Product } from '../../shared/modelsData/ProductModel/Product';
 import { FormsModule } from '@angular/forms';
+import { ProductCategory } from '../../shared/modelsData/ProductModel/ProductCategory';
 
 
 
@@ -16,7 +17,7 @@ import { FormsModule } from '@angular/forms';
   
 })
 export class ProductComponent implements OnInit {
-  Products: Product[] = []
+  Products: ProductCategory[] = []
   insert: boolean = false;
   view: boolean = false;
   value: string = ''
@@ -39,7 +40,7 @@ export class ProductComponent implements OnInit {
       next: (result: any) => {
        
         this.Products = result;
-        console.log('sono nel next ', this.Products[0])
+        console.log('sono nel next product ', this.Products[0])
        
       },
       error: (err: any) => {

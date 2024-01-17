@@ -8,5 +8,5 @@ export class ProductCategory{
     modifiedDate: any;
     inverseParentProductCategory: ProductCategory[] = [];
     parentProductCategory: ProductCategory= new ProductCategory;
-    products: Product= new Product;
+    products: Product[]= [];
 }
