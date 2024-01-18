@@ -15,18 +15,21 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css',
   providers: [AuthenticationService]
 })
-export class LoginComponent {
+export class LoginComponent{
   _user: User = new User('', '');
   _path: string = "http://localhost:5150/api/Login";
+  _isAuth: boolean;
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router) {
+    this._isAuth = authService._isAuth;
+  }
 
   Login() {
     if(!this._user.email || !this._user.email)
-      return alert("Compilare il form")
+      return
 
     if(localStorage.getItem("Token"))
-      return alert("Login gia' effettuato")
+      return
 
     this.authService.GetSalt(`${this._path}/GetSalt/${this._user.email}`).subscribe({
       next: (data: any) => {
@@ -35,16 +38,14 @@ export class LoginComponent {
         this.authService.CreateLogin(`${this._path}/Jwt`, this._user).subscribe({
           next: (data: any) => {
             localStorage.setItem('Token', data.body.token);
-            console.log("login effettuato");
-            this.authService.setIsAuthenticated(true);            
+            console.log("login effettuato");           
             this._user = new User('', '');
             this.router.navigate(['/']);
           },
           error: (err: any) => {
             localStorage.clear();
             console.log(err);
-            console.log("login fallito");
-            this.authService.setIsAuthenticated(false);
+            console.log("login fallito");          
             this._user = new User('', '');
           }
         })
@@ -54,6 +55,10 @@ export class LoginComponent {
         alert("login fallito");
       },
     })
-    console.log(this.authService.getIsAuthenticated());
+  }
+
+  Logout() {
+    localStorage.clear()     
+    this.router.navigate(['/']);
   }
 }

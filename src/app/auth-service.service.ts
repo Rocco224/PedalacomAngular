@@ -9,16 +9,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 
 export class AuthenticationService {
-  private _isAuth: boolean = false;
+  _isAuth: boolean;
   
-  constructor(private sharedService: SharedService) {}
-
-  getIsAuthenticated(): boolean {
-    return this._isAuth;
-  }
-
-  setIsAuthenticated(bool: boolean): boolean {
-    return this._isAuth = bool;
+  constructor(private sharedService: SharedService) {
+    if(localStorage.getItem("Token"))
+      this._isAuth = true;
+    else
+      this._isAuth = false;
   }
 
   GetSalt(path: string) {
@@ -31,11 +28,5 @@ export class AuthenticationService {
 
   CreateRegister(path: string, customer: Customer) {
     return this.sharedService.CreateData(path, customer)
-  }
-
-  Logout() {
-    localStorage.clear();
-    this.setIsAuthenticated(false);
-    console.log("Logout effettuato");
   }
 }

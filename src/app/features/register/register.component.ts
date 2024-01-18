@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../auth-service.service';
 import { Customer } from '../../shared/modelsData/CustomerModel/Customer';
 import * as CryptoJS from 'crypto-js';
-import {RouterModule} from '@angular/router'
+import {RouterModule} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,23 +15,23 @@ import {RouterModule} from '@angular/router'
   styleUrl: './register.component.css',
   providers: [AuthenticationService]
 })
-export class RegisterComponent implements OnChanges {
+export class RegisterComponent {
   _customer: Customer = new Customer;
   _path: string = "http://localhost:5150/Register";
   _password: string = '';
   _confirmPassword: string = '';
   _invalidPasswordMsg: string = '';
+  _isAuth: boolean;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) {
+    this._isAuth = authService._isAuth
+  }
 
   Register() {
-    if (this._password !== this._confirmPassword){
-      this._invalidPasswordMsg = "La password non combacia"
-      return console.log("Le password non combaciano")
-    }
-
-    if (!this._customer.firstName || !this._customer.lastName || !this._password|| !this._confirmPassword)
+    if (this._password !== this._confirmPassword)
+      return this._invalidPasswordMsg = "La password non combacia"
     
+    if (!this._customer.firstName || !this._customer.lastName || !this._password || !this._confirmPassword)
       return console.log("Compila tutti i campi")
 
     this._customer.passwordSalt = this.generateSalt();
@@ -60,7 +61,8 @@ export class RegisterComponent implements OnChanges {
     return CryptoJS.enc.Base64.stringify(hashedPassword);
   }
 
-  ngOnChanges() {
-    this._invalidPasswordMsg = "";
+  Logout() {
+    localStorage.clear()     
+    this.router.navigate(['/']);
   }
 }

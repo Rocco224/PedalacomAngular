@@ -16,12 +16,7 @@ export class NavbarComponent {
     InOrder: boolean = true;
     InProduct:boolean=true;
 
-    constructor(private authService: AuthenticationService) {}
-
-    get isAuth(): boolean {
-      
-      return this.authService.getIsAuthenticated();
-    }
+    constructor() {}
 
     customerClick() {
       this.InHome = true;
@@ -46,9 +41,5 @@ export class NavbarComponent {
       this.InCustomer = true;
       this.InOrder = true;
       this.InProduct=false;
-     }
-
-     Logout() {
-      this.authService.Logout;
      }
 }

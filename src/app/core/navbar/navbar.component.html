@@ -26,21 +26,10 @@
       </ul>
 
       <ul class="navbar-nav  mb-2 mb-lg-0">
-        <div *ngIf="isAuth">
           <li class="nav-item">
-            <button class="nav-link btn btn-outline-danger" onclick="Logout()">LOGOUT</button>
+            <button class="btn btn-primary"><i class="bi bi-person-circle fs-4" routerLink="/login"></i></button>
           </li>
-        </div>
-        <div *ngIf="!isAuth">
-          <li class="nav-item">
-            <button class="nav-link" routerLink="login">LOGIN</button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" routerLink="register">REGISTER</button>
-          </li>
-        </div>
       </ul>
-      
 
     </div>
   </div>
