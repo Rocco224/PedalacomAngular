@@ -23,7 +23,6 @@ export class SharedService {
   }
 
   ReadData(path: string): Observable<any> {
-    console.log(localStorage.getItem("Token"))
     return this.http.get(path, {
       headers: this.setTokenHttpHeader(),
       observe: 'response',
@@ -35,7 +34,6 @@ export class SharedService {
   }
 
   CreateData(path: string, data: any) {
-    console.log(path)
     return this.http.post(path, data, {
       headers: this.setTokenHttpHeader(),
       observe: 'response',

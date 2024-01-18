@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router'
+import { AuthenticationService } from '../../auth-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,11 +11,18 @@ import {RouterModule} from '@angular/router'
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  
     InHome: boolean = false;
     InCustomer: boolean = true;
     InOrder: boolean = true;
     InProduct:boolean=true;
+
+    constructor(private authService: AuthenticationService) {}
+
+    get isAuth(): boolean {
+      console.log(this.authService.getIsAuthenticated());
+      return this.authService.getIsAuthenticated();
+    }
+
     customerClick() {
       this.InHome = true;
       this.InCustomer = false;
@@ -38,5 +46,9 @@ export class NavbarComponent {
       this.InCustomer = true;
       this.InOrder = true;
       this.InProduct=false;
+     }
+
+     Logout() {
+      this.authService.Logout;
      }
 }
