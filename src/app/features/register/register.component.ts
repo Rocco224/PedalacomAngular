@@ -29,12 +29,12 @@ export class RegisterComponent implements OnChanges {
       return console.log("Le password non combaciano")
     }
 
-    if (!this._customer.FirstName || !this._customer.LastName || !this._password|| !this._confirmPassword)
+    if (!this._customer.firstName || !this._customer.lastName || !this._password|| !this._confirmPassword)
     
       return console.log("Compila tutti i campi")
 
-    this._customer.PasswordSalt = this.generateSalt();
-    this._customer.PasswordHash = this.hashWithSalt(this._password, this._customer.PasswordSalt);
+    this._customer.passwordSalt = this.generateSalt();
+    this._customer.passwordHash = this.hashWithSalt(this._password, this._customer.passwordSalt);
 
     this.authService.CreateRegister(this._path, this._customer).subscribe({
       next: (data: any) => {

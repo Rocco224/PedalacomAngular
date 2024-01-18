@@ -22,15 +22,18 @@ export class CustomerComponent implements OnInit {
      next: (result: any) => {
        
        this.Customers = result;
-       console.log('sono nel next ',this.Customers[0])
-       
+       console.log('sono nel next ')
+       console.log(this.Customers)
+       console.log(this.Customers[0].customerId)
       },
      error: (err: any) => {
         console.log('errore')
         console.log(err);
       }
    })
+  
   }
+
   ngOnInit() {
     console.log('avvio funzione')
     this.getCustomer();

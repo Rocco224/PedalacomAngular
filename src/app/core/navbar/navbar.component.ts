@@ -19,7 +19,7 @@ export class NavbarComponent {
     constructor(private authService: AuthenticationService) {}
 
     get isAuth(): boolean {
-      console.log(this.authService.getIsAuthenticated());
+      
       return this.authService.getIsAuthenticated();
     }
 

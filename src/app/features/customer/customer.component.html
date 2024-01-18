@@ -1,4 +1,14 @@
-<ul >
-    
-    <li *ngFor="let p of Customers">  {{p.FirstName}}   - {{p.LastName}} - </li>
-</ul>
+
+
+   <div class="container">  
+    <div class="row">
+        <div class="col-4 mx-auto my-2" *ngFor ="let p of Customers" >
+        <div class="card-body">
+           
+            <div  class="card" >
+            <h5 class="card-title">{{p.emailAddress}}</h5>
+            <p class="card-text">name: {{p.firstName}} -lastname : {{p.lastName}} <br> CustomerID:{{p.customerId}}</p>
+            
+        </div></div>
+    </div>
+   
