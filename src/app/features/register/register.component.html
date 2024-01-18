@@ -1,36 +1,46 @@
 <div class="container py-5">
-    <div class="row">
-        <div class="col-4 mx-auto">
-            <form ngNativeValidate class="border p-3 rounded shadow">
-                <h2 class="bold">Registrati</h2>
-                <div class="mb-3">
-                    <label for="firstname" class="form-label">Nome</label>
-                    <input [(ngModel)]="_customer.FirstName" type="text" class="form-control" id="firstname" name="firstname" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="lastname" class="form-label">Cognome</label>
-                    <input [(ngModel)]="_customer.LastName" type="text" class="form-control" id="lastname" name="lastname" required>
-                  </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input [(ngModel)]="_customer.EmailAddress" type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input [(ngModel)]="_password" type="password" class="form-control" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" #passwordInput="ngModel" data-toggle="tooltip" data-placement="right" title="La password deve contenere almeno un numero, una lettera minuscola, una lettera maiuscola, un carattere speciale e essere lunga almeno 8 caratteri.">
-                </div>
-                <div class="mb-3">
-                  <label for="confirmedPassword" class="form-label">Conferma password</label>
-                  <input [(ngModel)]="_confirmPassword" type="password" class="form-control" id="confirmedPassword" name="confirmedPassword" required>
-                </div>
-                <div class="text-danger mb-3" *ngIf="_password !== _confirmPassword">{{ this._invalidPasswordMsg }}</div>
-                
-                <a routerLink="/login">Hai già un account? Accedi!</a>
-                
-                <div class="text-end mt-4">
-                  <button (click)="Register()" type="submit" class="btn btn-primary">Registrati</button>
-                </div>
-              </form>
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <form ngNativeValidate class="border p-3 rounded shadow">
+        <div class="text-center mb-4">
+          <h2 class="bold">Registrati</h2>
         </div>
+
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="_customer.FirstName" type="text" class="form-control" id="firstname" name="firstname"
+            placeholder="Nome" required>
+          <label for="firstname">Nome</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="_customer.LastName" type="text" class="form-control" id="lastname" name="lastname"
+            placeholder="Cognome" required>
+          <label for="lastname">Cognome</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="_customer.EmailAddress" type="email" class="form-control" id="email" name="email"
+            placeholder="name@example.com" required>
+          <label for="email">Email</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="_password" type="password" class="form-control" id="password" name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" #passwordInput="ngModel" data-toggle="tooltip"
+            data-placement="right"
+            title="La password deve contenere almeno un numero, una lettera minuscola, una lettera maiuscola, un carattere speciale e essere lunga almeno 8 caratteri."
+            placeholder="Password" required>
+          <label for="password">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="_confirmPassword" type="password" class="form-control" id="confirmedPassword"
+            name="confirmedPassword" placeholder="Password" required>
+          <label for="confirmedPassword">Conferma password</label>
+        </div>
+        <div class="text-danger mb-3" *ngIf="_password !== _confirmPassword">{{ this._invalidPasswordMsg }}</div>
+
+        <div class="d-flex justify-content-between mt-5">
+          <a routerLink="/login" class="align-self-center">Hai già un account? Accedi!</a>
+          <button (click)="Register()" type="submit" class="btn btn-primary">Registrati</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
