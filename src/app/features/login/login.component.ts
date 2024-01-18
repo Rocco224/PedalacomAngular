@@ -6,6 +6,7 @@ import { AuthenticationService } from '../../auth-service.service';
 import * as CryptoJS from 'crypto-js';
 import {RouterModule} from '@angular/router'
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
   _user: User = new User('', '');
   _path: string = "http://localhost:5150/api/Login";
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   Login() {
     if(!this._user.email || !this._user.email)
@@ -35,14 +36,16 @@ export class LoginComponent {
         this.authService.CreateLogin(`${this._path}/Jwt`, this._user).subscribe({
           next: (data: any) => {
             localStorage.setItem('Token', data.body.token);
-            alert("login effettuato");
+            console.log("login effettuato");
+            this.authService.setIsAuthenticated(true);            
             this._user = new User('', '');
             this.router.navigate(['/']);
           },
           error: (err: any) => {
             localStorage.clear();
             console.log(err);
-            alert("login fallito");
+            console.log("login fallito");
+            this.authService.setIsAuthenticated(false);
             this._user = new User('', '');
           }
         })
@@ -52,5 +55,7 @@ export class LoginComponent {
         alert("login fallito");
       },
     })
+    console.log(this.authService.getIsAuthenticated());
+
   }
 }

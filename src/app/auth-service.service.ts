@@ -1,14 +1,25 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './shared/modelsData/UserModel/User'
 import { SharedService } from './shared.service';
 import { Customer } from './shared/modelsData/CustomerModel/Customer';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthenticationService {
+  private _isAuth: boolean = false;
+  
   constructor(private sharedService: SharedService) {}
+
+  getIsAuthenticated(): boolean {
+    return this._isAuth;
+  }
+
+  setIsAuthenticated(bool: boolean): boolean {
+    return this._isAuth = bool;
+  }
 
   GetSalt(path: string) {
     return this.sharedService.ReadDataById(path);
@@ -23,7 +34,8 @@ export class AuthenticationService {
   }
 
   Logout() {
-    localStorage.clear()
+    localStorage.clear();
+    this.setIsAuthenticated(false);
     console.log("Logout effettuato");
   }
 }
