@@ -6,7 +6,6 @@ import { AuthenticationService } from '../../auth-service.service';
 import * as CryptoJS from 'crypto-js';
 import {RouterModule} from '@angular/router'
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'app-login',
@@ -56,6 +55,5 @@ export class LoginComponent {
       },
     })
     console.log(this.authService.getIsAuthenticated());
-
   }
 }

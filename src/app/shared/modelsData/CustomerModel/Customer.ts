@@ -18,7 +18,7 @@ export class Customer{
     Rowguid = undefined;
     ModifiedDate = undefined;
     Valid = undefined;
-    Role = "Admin";
+    Role = "Guest";
     CustomerAddresses = undefined;
     SalesOrderHeaders = undefined;
 }
