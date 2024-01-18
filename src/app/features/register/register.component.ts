@@ -29,7 +29,8 @@ export class RegisterComponent implements OnChanges {
       return console.log("Le password non combaciano")
     }
 
-    if (!this._customer.FirstName || !this._customer.LastName || !this._customer.PasswordHash || !this._customer.PasswordSalt)
+    if (!this._customer.FirstName || !this._customer.LastName || !this._password|| !this._confirmPassword)
+    
       return console.log("Compila tutti i campi")
 
     this._customer.PasswordSalt = this.generateSalt();
