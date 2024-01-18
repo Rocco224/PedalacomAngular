@@ -5,11 +5,12 @@ import { User } from '../../shared/modelsData/UserModel/User';
 import { AuthenticationService } from '../../auth-service.service';
 import * as CryptoJS from 'crypto-js';
 import {RouterModule} from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   providers: [AuthenticationService]
@@ -22,10 +23,10 @@ export class LoginComponent {
 
   Login() {
     if(!this._user.email || !this._user.email)
-      return console.log("Compilare il form")
+      return alert("Compilare il form")
 
     if(localStorage.getItem("Token"))
-      return console.log("Login gia' effettuato")
+      return alert("Login gia' effettuato")
 
     this.authService.GetSalt(`${this._path}/GetSalt/${this._user.email}`).subscribe({
       next: (data: any) => {
@@ -34,20 +35,21 @@ export class LoginComponent {
         this.authService.CreateLogin(`${this._path}/Jwt`, this._user).subscribe({
           next: (data: any) => {
             localStorage.setItem('Token', data.body.token);
-            console.log("login effettuato");
+            alert("login effettuato");
             this._user = new User('', '');
+            this.router.navigate(['/']);
           },
           error: (err: any) => {
             localStorage.clear();
             console.log(err);
-            console.log("login fallito");
+            alert("login fallito");
             this._user = new User('', '');
           }
         })
       },
       error: (err: any) => {
         console.log(err);
-        console.log("login fallito");
+        alert("login fallito");
       },
     })
   }
