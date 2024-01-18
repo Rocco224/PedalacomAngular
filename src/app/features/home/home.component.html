@@ -1,8 +1,104 @@
-<div><p>BENVENUTI IN PEDALACOM</p></div>
+<header class="mb-5">
+     <div class="header position-relative d-flex">
+          
+     </div>
+</header>
+<main>
+     <div class="container-fluid">
+          
+          <div class="row justify-content-around">
+               
+               <!-- <div class="col-3 filter">
+                    
+                  <h4 class="text-center fs-3 mt-4">Ricerca avanzata</h4>
+                  <div class="d-flex justify-content-around mb-3">
+                    <p class="pt-2 fs-5">Prezzo Min:</p>
+                    <input type="number" name="pricemin" placeholder="0.00$">
+                    </div>
+                  <div class="d-flex justify-content-around mb-3">
+                       <p class="pt-2 fs-5">Prezzo Max:</p>
+                       <input type="number" name="pricemax" placeholder="0.00$">
+                  </div>
+                  <div class="container">
+                    <div class="row mb-3">
+                         <p class="pt-2 fs-5 text-center">Colore</p>
+                    </div>
+                    <div class="row justify-content-around">
+                         <div class="form-check form-switch col-5 mb-2">
+                              <input class="form-check-input" type="checkbox" role="switch"  name="Black" >
+                              <label class="ms-1" for="Black">Nero</label>                         
+                         </div>
+                         <div class="form-check form-switch col-5 mb-2">
+                              <input class="form-check-input" type="checkbox" role="switch"name="White">
+                              <label class="ms-1" for="White">Bianco</label>
+                         </div>
+                         <div class="form-check form-switch col-5 mb-2">
+                              <input class="form-check-input" type="checkbox" role="switch" name="Silver">
+                              <label class="ms-1" for="Silver">Argento</label>
+                         </div>
+                         <div class="form-check form-switch col-5 mb-2">
+                              <input class="form-check-input" type="checkbox" role="switch" name="Red">
+                              <label class="ms-1" for="Red">Rosso</label>
+                         </div>
+                         <div class="form-check form-switch col-5 mb-2">
+                              <input class="form-check-input" type="checkbox" role="switch" name="Blue">
+                              <label class="ms-1" for="Blue">Blu</label>
+                         </div>
+                         <div class="form-check form-switch col-5">
+                              <input class="form-check-input" type="checkbox" role="switch" name="Multi">
+                              <label class="ms-1" for="Multi">Multicolor</label>
+                         </div>
+                    </div>
+                    <div class="row mt-4">
+                         <select class="form-select" aria-label="Default select example">
+                              <option selected>Categoria</option>
+                              <option value="1">Biciclette</option>
+                              <option value="2">Componenti</option>
+                              <option value="3">Vestiario</option>
+                              <option value="4">Accessori</option>
+                         </select>
+                    </div>
+                    <div class="text-center mt-4">
+                         <button  class="btn btn-primary" type="submit">Filtra</button>
+                    </div>
+                    
+                    
+               </div> -->
+               
+               
+                    <div>Una selezione dei nostri migliori prodotti</div>
+                    <div  *ngFor="let p of Products" > 
 
-    <div>Una selezione dei nostri migliori prodotti</div>
-    <div *ngFor="let p of Products" > <p *ngIf="p.productId%5==0&&p.thumbNailPhoto!='R0lGODlhUAAxAPcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAZgAAmQAAzAAA/wAzAAAzMwAzZgAzmQAzzAAz/wBmAABmMwBmZgBmmQBmzABm/wCZAACZMwCZZgCZmQCZzACZ/wDMAADMMwDMZgDMmQDMzADM/wD/AAD/MwD/ZgD/mQD/zAD//zMAADMAMzMAZjMAmTMAzDMA/zMzADMzMzMzZjMzmTMzzDMz/zNmADNmMzNmZjNmmTNmzDNm/zOZADOZMzOZZjOZmTOZzDOZ/zPMADPMMzPMZjPMmTPMzDPM/zP/ADP/MzP/ZjP/mTP/zDP//2YAAGYAM2YAZmYAmWYAzGYA/2YzAGYzM2YzZmYzmWYzzGYz/2ZmAGZmM2ZmZmZmmWZmzGZm/2aZAGaZM2aZZmaZmWaZzGaZ/2bMAGbMM2bMZmbMmWbMzGbM/2b/AGb/M2b/Zmb/mWb/zGb//5kAAJkAM5kAZpkAmZkAzJkA/5kzAJkzM5kzZpkzmZkzzJkz/5lmAJlmM5lmZplmmZlmzJlm/5mZAJmZM5mZZpmZmZmZzJmZ/5nMAJnMM5nMZpnMmZnMzJnM/5n/AJn/M5n/Zpn/mZn/zJn//8wAAMwAM8wAZswAmcwAzMwA/8wzAMwzM8wzZswzmcwzzMwz/8xmAMxmM8xmZsxmmcxmzMxm/8yZAMyZM8yZZsyZmcyZzMyZ/8zMAMzMM8zMZszMmczMzMzM/8z/AMz/M8z/Zsz/mcz/zMz///8AAP8AM/8AZv8Amf8AzP8A//8zAP8zM/8zZv8zmf8zzP8z//9mAP9mM/9mZv9mmf9mzP9m//+ZAP+ZM/+ZZv+Zmf+ZzP+Z///MAP/MM//MZv/Mmf/MzP/M////AP//M///Zv//mf//zP///yH5BAEAABAALAAAAABQADEAAAj/AP8JHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKHEmypMmTKFOqXJkRBYqBLhfGZPnQ5ct/MxPmpMnQpsCZNm/CfBnTZ86gQ3HeRMoRadGlQpUqJfoUZ9KnVH9GxVhUKtCoVaWKnZrVK9SmVMPuVHvWrFisPjd+LbuW7tmvb8t6nJuXIFutfbH2lSt07ta/eeOy3clTYuGtjS8yjUy5suXLmDHHdRjWIGPGIjdDBA3YL2SQVY+mvQsVL16yqLOqfuyWtlHZbTv+nY176G67H38DTs068GrSkoMSN+62+fKQqrW2Xe6aem7CSaf6fq7ceevTmcOLEh9Pvrz58+jTq1/Pvr379+8DAgA7'">
-         <img [src]="getImage(p.thumbNailPhoto)"> {{p.name}},  {{p.listPrice}} $,  {{p.color}} - {{p.weight}}  - {{p.size}}</p>
-    </div>
+                         <div  *ngFor="let x of p.products" >
+                         <div *ngIf="x.thumbNailPhoto!='R0lGODlhUAAxAPcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAZgAAmQAAzAAA/wAzAAAzMwAzZgAzmQAzzAAz/wBmAABmMwBmZgBmmQBmzABm/wCZAACZMwCZZgCZmQCZzACZ/wDMAADMMwDMZgDMmQDMzADM/wD/AAD/MwD/ZgD/mQD/zAD//zMAADMAMzMAZjMAmTMAzDMA/zMzADMzMzMzZjMzmTMzzDMz/zNmADNmMzNmZjNmmTNmzDNm/zOZADOZMzOZZjOZmTOZzDOZ/zPMADPMMzPMZjPMmTPMzDPM/zP/ADP/MzP/ZjP/mTP/zDP//2YAAGYAM2YAZmYAmWYAzGYA/2YzAGYzM2YzZmYzmWYzzGYz/2ZmAGZmM2ZmZmZmmWZmzGZm/2aZAGaZM2aZZmaZmWaZzGaZ/2bMAGbMM2bMZmbMmWbMzGbM/2b/AGb/M2b/Zmb/mWb/zGb//5kAAJkAM5kAZpkAmZkAzJkA/5kzAJkzM5kzZpkzmZkzzJkz/5lmAJlmM5lmZplmmZlmzJlm/5mZAJmZM5mZZpmZmZmZzJmZ/5nMAJnMM5nMZpnMmZnMzJnM/5n/AJn/M5n/Zpn/mZn/zJn//8wAAMwAM8wAZswAmcwAzMwA/8wzAMwzM8wzZswzmcwzzMwz/8xmAMxmM8xmZsxmmcxmzMxm/8yZAMyZM8yZZsyZmcyZzMyZ/8zMAMzMM8zMZszMmczMzMzM/8z/AMz/M8z/Zsz/mcz/zMz///8AAP8AM/8AZv8Amf8AzP8A//8zAP8zM/8zZv8zmf8zzP8z//9mAP9mM/9mZv9mmf9mzP9m//+ZAP+ZM/+ZZv+Zmf+ZzP+Z///MAP/MM//MZv/Mmf/MzP/M////AP//M///Zv//mf//zP///yH5BAEAABAALAAAAABQADEAAAj/AP8JHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKHEmypMmTKFOqXJkRBYqBLhfGZPnQ5ct/MxPmpMnQpsCZNm/CfBnTZ86gQ3HeRMoRadGlQpUqJfoUZ9KnVH9GxVhUKtCoVaWKnZrVK9SmVMPuVHvWrFisPjd+LbuW7tmvb8t6nJuXIFutfbH2lSt07ta/eeOy3clTYuGtjS8yjUy5suXLmDHHdRjWIGPGIjdDBA3YL2SQVY+mvQsVL16yqLOqfuyWtlHZbTv+nY176G67H38DTs068GrSkoMSN+62+fKQqrW2Xe6aem7CSaf6fq7ceevTmcOLEh9Pvrz58+jTq1/Pvr379+8DAgA7'">
+                              
+
+                                   <div class="card col-lg-6" style="width: 18rem;">
+                                        <img class="cardimg img-fluid" [src]="getImage(x.thumbNailPhoto)">
+                                        <div class="card-body">
+                                          <h5 class="card-title">{{x.name}}</h5>
+                                          <p class="card-text">{{x.listPrice}} $,  {{x.color}} - {{x.weight}}  - {{x.size}} $</p>
+                                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                      </div>
+                                  
+                         <!-- <img [src]="getImage(p.thumbNailPhoto)"> {{p.name}},  {{p.listPrice}} $,  {{p.color}} - {{p.weight}}  - {{p.size}}</p> -->
+                         
+                         
+                         </div>
+                         </div>
+                    
+
+
+                    </div>
+               
+               <!-- <div class="col-3">
+                    <h4>Carrello</h4>
+               </div> -->
+          </div>
+          
+     
+     </div>
+</main>
 
 

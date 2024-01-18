@@ -86,11 +86,50 @@
         </form>
         </div>
 </div>
-<button (click)="cngView()">vedi prodotti </button>
-<ul *ngIf="view">
+<div>
+    <form [formGroup]="FilterForm" (ngSubmit)="FilterSubmit()">
+        <label for="PriceMin">Prezzo minimo:</label>
+                <input type="number" id="PriceMin" formControlName="PriceMin"   >
+                <button type="submit" [disabled]="!FilterForm.valid" >filtra</button>
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+
+        <div  class="col-6" *ngFor="let p of Products"> 
+            <div   *ngFor="let x of p.products">
+                <div *ngIf="x.listPrice>priceMin">
+                    <div >
     
-    <li *ngFor="let p of Products">  {{p.name}}   - {{p.listPrice}} - </li>
-</ul>
-
-
+                        <div  class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">{{x.listPrice}}</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                    </div>
+                
+                </div>
+                
+            </div>
+       
+        
+        </div>
     </div>
+
+    
+</div>
+    
+        
+
+
+</div>
+</div>
+
+
+
+
+
+

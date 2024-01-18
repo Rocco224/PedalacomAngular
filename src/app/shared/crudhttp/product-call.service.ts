@@ -7,7 +7,7 @@ import { Product } from '../modelsData/ProductModel/Product';
   providedIn: 'root'
 })
 export class ProductCallService {
-  private ProductURL='http://localhost:5150/api/Products'
+  private ProductURL='http://localhost:5150/api/ProductCategories'
 
   constructor(private http: HttpClient) { }
 

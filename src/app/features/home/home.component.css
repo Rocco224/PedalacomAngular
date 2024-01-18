@@ -1,0 +1,19 @@
+.header{
+    color: aliceblue;
+    height: 100vh;
+    background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url("../../../assets/images/Header.png") ;
+
+   background-size:cover;
+   background-repeat:no-repeat;
+   
+}
+
+.filter{
+    border: 1px solid rgb(79, 79, 236);
+    height: 65vh;
+}
+
+.btn{
+    width:100%;
+}
+
