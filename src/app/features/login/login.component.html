@@ -1,10 +1,10 @@
-<div class="container mt-5">
+<div class="container my-5">
     <div class="row">
         <div class="col-4 mx-auto">
-            <form class="border p-3 rounded">
-                <h2>Login</h2>
+            <form ngNativeValidate class="border p-3 rounded shadow">
+                <h2 class="bold">Accedi</h2>
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email address</label>
+                  <label for="email" class="form-label">Email</label>
                   <input [(ngModel)]="_user.email" type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
@@ -17,7 +17,10 @@
                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 -->
-                <button (click)="Login()" type="submit" class="btn btn-primary">Login</button>
+                <a routerLink="/register">Non hai un account? Registrati!</a>
+                <div class="text-end mt-4">
+                  <button (click)="Login()" type="submit" class="btn btn-primary">Accedi</button>
+                </div>
               </form>
         </div>
     </div>

@@ -14,7 +14,7 @@ import { SharedService } from '../../shared.service';
 })
 export class SalesOrderHeaderComponent {
   _path = 'http://localhost:5150/api/SalesOrderHeaders'
-  _ordersList: any = [];
+  _ordersList: any;
 
   constructor(private sharedService: SharedService) { }
 
@@ -22,8 +22,6 @@ export class SalesOrderHeaderComponent {
     this.sharedService.ReadData(this._path).subscribe({
       next: (data: any) => {
         this._ordersList = data.body;
-        console.log(this._ordersList);
-        console.log(this._ordersList[0].salesOrderId)
       },
       error: (err: any) => {
         console.log(err);

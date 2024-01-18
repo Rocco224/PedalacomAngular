@@ -1,43 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../auth-service.service';
 import { Customer } from '../../shared/modelsData/CustomerModel/Customer';
 import * as CryptoJS from 'crypto-js';
+import {RouterModule} from '@angular/router'
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
   providers: [AuthenticationService]
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnChanges {
   _customer: Customer = new Customer;
   _path: string = "http://localhost:5150/Register";
+  _password: string = '';
+  _confirmPassword: string = '';
+  _invalidPasswordMsg: string = '';
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService) { }
 
   Register() {
+    if (this._password !== this._confirmPassword){
+      this._invalidPasswordMsg = "La password non combacia"
+      return console.log("Le password non combaciano")
+    }
+
+    if (!this._customer.FirstName || !this._customer.LastName || !this._customer.PasswordHash || !this._customer.PasswordSalt)
+      return console.log("Compila tutti i campi")
+
     this._customer.PasswordSalt = this.generateSalt();
-    this._customer.PasswordHash = this.hashWithSalt(this._customer.PasswordHash, this._customer.PasswordSalt);
-    
-    console.log(this._path);
-    
-    console.log(this._customer);
-  
+    this._customer.PasswordHash = this.hashWithSalt(this._password, this._customer.PasswordSalt);
+
     this.authService.CreateRegister(this._path, this._customer).subscribe({
       next: (data: any) => {
-        console.log(data);
-        
-        if(data.status == 200) {
+        if (data.status == 200) {
           console.log("Registrazione effettuata");
         }
       },
       error: (err: any) => {
         console.log(err);
-        console.log("login fallito");
+        console.log("Registrazione fallita");
       },
     })
   }
@@ -51,5 +57,9 @@ export class RegisterComponent {
   hashWithSalt(password: string, salt: string): string {
     const hashedPassword = CryptoJS.HmacSHA256(password, salt);
     return CryptoJS.enc.Base64.stringify(hashedPassword);
+  }
+
+  ngOnChanges() {
+    this._invalidPasswordMsg = "";
   }
 }

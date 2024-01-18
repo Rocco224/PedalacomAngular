@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../shared/modelsData/UserModel/User';
 import { AuthenticationService } from '../../auth-service.service';
 import * as CryptoJS from 'crypto-js';
+import {RouterModule} from '@angular/router'
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   providers: [AuthenticationService]
@@ -20,6 +21,12 @@ export class LoginComponent {
   constructor(private authService: AuthenticationService) { }
 
   Login() {
+    if(!this._user.email || !this._user.email)
+      return console.log("Compilare il form")
+
+    if(localStorage.getItem("Token"))
+      return console.log("Login gia' effettuato")
+
     this.authService.GetSalt(`${this._path}/GetSalt/${this._user.email}`).subscribe({
       next: (data: any) => {
         this._user.password = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(this._user.password, data.salt));
