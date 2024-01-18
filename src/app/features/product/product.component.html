@@ -1,116 +1,167 @@
 <div>
 <div>
-    <button (click)="cngInsert()">Inserisci nuovo prodotto</button>
+    
+    <button class="btn btn-primary" (click)="cngInsert()">Inserisci nuovo prodotto</button>
     <div *ngIf="insert"> <div class="container">
         <h2>Inserisci un nuovo prodotto</h2>
         <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)">
-            <div>
-              <label for="Name">Name * :</label>
-              <input type="text" id="Name" name="Name" ngModel required >
+            <div class="mb-3">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="Name">Name * :</label>
+                    <input class="form-control" type="text" id="Name" name="Name" ngModel required >
+                </div>
+                <div class="col">
+                    <label class="form-label" for="ProductNumber">ProductNumber * : </label>
+                    <input class="form-control" type="text" id="ProductNumber" name="ProductNumber" ngModel required>
+                </div>
             </div>
-          
-            <div>
-              <label for="ProductNumber">ProductNumber * : </label>
-              <input type="text" id="ProductNumber" name="ProductNumber" ngModel required>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="Color">Color:</label>
+              <input class="form-control" type="text" id="Color" name="Color" ngModel >
+                </div>
+                <div class="col">
+                    <label class="form-label" for="StandardCost">Standard Cost * :</label>
+                <input class="form-control" type="number" id="StandardCost" name="StandardCost" ngModel required pattern="^\d+(\.\d{1,2})?$" >
+                </div>
             </div>
-          
-            <div>
-              <label for="Color">Color:</label>
-              <input type="text" id="Color" name="Color" ngModel >
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="ListPrice">List Price * :</label>
+                    <input class="form-control" type="number" id="ListPrice" name="ListPrice" ngModel required pattern="^\d+(\.\d{1,2})?$">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="Size">Size:</label>
+                <input class="form-control" type="text" id="Size" name="Size" ngModel  maxlength="5">
+                </div>
             </div>
-
-            <div>
-                <label for="StandardCost">Standard Cost * :</label>
-                <input type="number" id="StandardCost" name="StandardCost" ngModel required pattern="^\d+(\.\d{1,2})?$" >
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="Weight">Weight:</label>
+                <input class="form-control" type="number" id="Weight" name="Weight" ngModel pattern="^\d+(\.\d{1,2})?$" >
+                </div>
+                <div class="col">
+                    <label class="form-label" for="SellStartDate">Sell Start Date * :</label>
+                <input class="form-control" type="date" id="SellStartDate" name="SellStartDate" ngModel required >
+                </div>
             </div>
-
-            <div>
-                <label for="ListPrice">List Price * :</label>
-                <input type="number" id="ListPrice" name="ListPrice" ngModel required pattern="^\d+(\.\d{1,2})?$">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="SellEndDate">SellEndDate:</label>
+                <input class="form-control" type="date" id="SellEndDate" name="SellEndDate" ngModel >
+                </div>
+                <div class="col">
+                    <label class="form-label" for="DiscontinuedDate">Discontinued Date:</label>
+                <input class="form-control" type="date" id="DiscontinuedDate" name="DiscontinuedDate" ngModel >
+                </div>
             </div>
-
-            
-            <div>
-                <label for="Size">Size:</label>
-                <input type="text" id="Size" name="Size" ngModel  maxlength="5">
+            <div class="row">
+                <div class="col">
+                    <label  class="form-label" for="ModifiedDate">Modified Date * :</label>
+                <input class="form-control" type="date" id="ModifiedDate" name="ModifiedDate" ngModel required>
+                </div>
+                <div class="col">
+                    <br> <br> 
+                    <button class="btn btn-primary mb-3" type="submit" [disabled]="!myForm.valid">Invia</button>
+                </div>
             </div>
-
-            <div>
-                <label for="Weight">Weight:</label>
-                <input type="number" id="Weight" name="Weight" ngModel pattern="^\d+(\.\d{1,2})?$" >
             </div>
-<!--
-            <div>
-                <label for="ProductCategoryID">Product Category ID:</label>
-                <input type="text" id="ProductCategoryID" name="ProductCategoryID" ngModel pattern="^\d+">
-            </div>
-
-            <div>
-                <label for="ProductModelID">Product Model ID:</label>
-                <input type="number" id="ProductModelID" name="ProductModelID" ngModel pattern="^\d+">
-            </div>-->
-                   
-            <div>
-                <label for="SellStartDate">Sell Start Date * :</label>
-                <input type="date" id="SellStartDate" name="SellStartDate" ngModel required >
-            </div>
-
-            <div>
-                <label for="SellEndDate">SellEndDate:</label>
-                <input type="date" id="SellEndDate" name="SellEndDate" ngModel >
-            </div>
-
-            <div>
-                <label for="DiscontinuedDate">Discontinued Date:</label>
-                <input type="date" id="DiscontinuedDate" name="DiscontinuedDate" ngModel >
-            </div>
-<!--
-            <div>
-                <label for="ThumbNailPhoto">ThumbNail Photo:</label>
-                <input type="text" id="ThumbNailPhoto" name="ThumbNailPhoto" ngModel >            
-            </div>
-
-            <div>
-                <label for="ThumbnailPhotoFileName">Thumbnail Photo File Name:</label>
-                <input type="text" id="ThumbnailPhotoFileName" name="ThumbnailPhotoFileName" ngModel >
-            </div>-->
-
-            <div>
-                <label for="ModifiedDate">Modified Date * :</label>
-                <input type="date" id="ModifiedDate" name="ModifiedDate" ngModel required>
-            </div>
-
-
-          
-            <button type="submit" [disabled]="!myForm.valid">Invia</button>
         </form>
         </div>
 </div>
-<div>
+<HR>
+    <br> <br>
+<div class="mb-3">
     <form [formGroup]="FilterForm" (ngSubmit)="FilterSubmit()">
-        <label for="PriceMin">Prezzo minimo:</label>
-                <input type="number" id="PriceMin" formControlName="PriceMin"   >
-                <button type="submit" [disabled]="!FilterForm.valid" >filtra</button>
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="PriceMin">Price min:</label>
+                <input class="form-control" type="number" id="PriceMin" formControlName="PriceMin"   >
+            </div>
+            <div class="col">
+                <label class="form-label" for="PriceMax">Price max:</label>
+                <input class="form-control" type="number" id="PriceMax" formControlName="PriceMax"   >
+            </div>
+            <div class="col">
+                <label class="form-label" for="Category">Category:</label>
+                <select  class="form-select" aria-label="Default select example" formControlName="Category">
+                    <option selected>Filter by category</option>
+                    <option value="1">Bikes</option>
+                    <option value="2">Components</option>
+                    <option value="3">Clothing</option>
+                    <option value="4">Accessories</option>
+                  </select>
+            </div>
+            <div class="col">
+                <label class="form-label" for="Color">Color:</label>
+                <input class="form-control" type="text" id="Color" formControlName="Color"   >
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary mb-3" [disabled]="!FilterForm.valid">Filter</button>
+                
+            </div>
+          </div>
+       
+                
+                
+                  
+               
     </form>
 </div>
-<div class="container">
+<div class="container" >
     <div class="row">
 
-        <div  class="col-6" *ngFor="let p of Products"> 
+        <div  class="col-12" *ngFor="let p of Products"> 
             <div   *ngFor="let x of p.products">
-                <div *ngIf="x.listPrice>priceMin">
+                <div *ngIf="x.listPrice>=priceMin && x.listPrice<=priceMax && color=='' && category==''">
+                        
                     <div >
-    
-                        <div  class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
+                        <div  class="card" style="width: auto;">
+                            <img class="cardimg img-fluid" [src]="getImage(x.thumbNailPhoto)" style="width:min-content ; height:min-content ;">
                             <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">{{x.listPrice}}</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">name: {{x.name}} -price : {{x.listPrice}} $- color: {{x.color}}</p>
+                                
                             </div>
-                          </div>
-                    </div>
-                
+                        </div>
+                    </div>    
+                </div>
+                <div *ngIf="x.listPrice>=priceMin && x.listPrice<=priceMax && color!='' && category=='' && x.color==color">
+                        
+                    <div >
+                        <div  class="card" style="width: auto;">
+                            <img class="cardimg img-fluid" [src]="getImage(x.thumbNailPhoto)" style="width:min-content ; height:min-content ;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">name: {{x.name}} -price : {{x.listPrice}} $- color: {{x.color}}</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div *ngIf="x.listPrice>=priceMin && x.listPrice<=priceMax && color=='' && category!='' && p.parentProductCategoryId==category">
+                        
+                    <div >
+                        <div  class="card" style="width: auto;">
+                            <img class="cardimg img-fluid" [src]="getImage(x.thumbNailPhoto)" style="width:min-content ; height:min-content ;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">name: {{x.name}} -price : {{x.listPrice}} $- color: {{x.color}}</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div *ngIf="x.listPrice>=priceMin && x.listPrice<=priceMax && color!='' && category!='' && p.parentProductCategoryId==category && x.color==color">
+                        
+                    <div >
+                        <div  class="card" style="width: auto;">
+                            <img class="cardimg img-fluid" [src]="getImage(x.thumbNailPhoto)" style="width:min-content ; height:min-content ;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">name: {{x.name}} -price : {{x.listPrice}} $- color: {{x.color}}            </p>
+                            </div>
+                        </div>
+                    </div>    
                 </div>
                 
             </div>
