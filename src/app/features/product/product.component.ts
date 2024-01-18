@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductCallService } from '../../shared/crudhttp/product-call.service';
 import { Product } from '../../shared/modelsData/ProductModel/Product';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { ProductCategory } from '../../shared/modelsData/ProductModel/ProductCategory';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
   providers: [ProductCallService]
@@ -22,8 +23,16 @@ export class ProductComponent implements OnInit {
   view: boolean = false;
   value: string = ''
   newProduct: Product[]=[]
-  constructor(private ps: ProductCallService) {
+  priceMin=0
+      priceMax=1000000000
+      category=0
+      color=""
+ 
+  FilterOn: boolean= false;
+  FilterForm!: FormGroup;
+  constructor(private ps: ProductCallService, private formBuilder: FormBuilder) {
    }
+ 
    submitForm(form: any): void {
     if (form.valid) {
       // Puoi eseguire qui l'invio del form o eseguire altre azioni
@@ -33,6 +42,18 @@ export class ProductComponent implements OnInit {
       this.postProduct()
 
     }
+    
+  }
+
+  FilterSubmit(){
+    var priceMinControl: any = this.FilterForm.get('PriceMin');
+    if (priceMinControl.value != null){
+       this.priceMin= this.FilterForm.get('PriceMin')!.value;
+    }
+    else {
+      this.priceMin=0
+    }
+
   }
   getProduct() {
     this.ps.getProductData().subscribe({
@@ -40,7 +61,7 @@ export class ProductComponent implements OnInit {
       next: (result: any) => {
        
         this.Products = result;
-        console.log('sono nel next product ', this.Products[0])
+        console.log('sono nel next product ', this.Products[8])
        
       },
       error: (err: any) => {
@@ -65,6 +86,12 @@ export class ProductComponent implements OnInit {
     })
   }
   ngOnInit() {
+    this.FilterForm=this.formBuilder.group({
+      PriceMin:0,
+      PriceMax:1000000000,
+      Category:0,
+      Color:""
+    })
     
     this.getProduct();
   }
